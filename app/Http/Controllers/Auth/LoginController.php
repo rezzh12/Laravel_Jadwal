@@ -42,9 +42,6 @@ class LoginController extends Controller
             if (auth()->user()->roles_id == 2) {
                 return redirect()->route('kepsek.home.data1.data2.data3.data4');
             }else{
-                $user = User::where('email', $input['email'])->first();
-                $admin = User::where('roles_id', 1)->get();
-                Notification::send($admin, new LoginNotification($user));
                 return redirect()->route('home');
             }
         }else{

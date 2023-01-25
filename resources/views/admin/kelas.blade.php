@@ -29,7 +29,7 @@
                                     <div class="btn-group" role="group" aria-label="Basic example">
                                         <button type="button" id="btn-edit-jadwal" class="btn btn-success"
                                             data-toggle="modal" data-target="#editJadwalModal"
-                                            data-id="{{ $kls->id }}" style="margin-right:20px;">EDIT</button>
+                                            data-id="{{ $kls->id }}" style="margin-right:20px;">UBAH</button>
                                             
                                             {!! Form::open(['url' => 'admin/kelas/delete/'.$kls->id, 'method' => 'POST']) !!}
                                         {{ Form::button('HAPUS', ['class' => 'btn btn-danger', 'onclick' => "deleteConfirmation('".$kls->nama_kelas."')"]) }}
@@ -49,7 +49,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Tambah Data Jadwal</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Tambah Data Kelas</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -69,7 +69,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                    <button type="submit" class="btn btn-primary">Kirim</button>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
                     </form>
                 </div>
             </div>
@@ -79,10 +79,10 @@
     <!--Ubah Data-->
      <!-- UBAH DATA -->
      <div class="modal fade" id="editJadwalModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Edit Data Jadwal</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Ubah Data Kelas</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -91,8 +91,6 @@
                     <form method="post" action="{{ route('admin.kelas.update') }}" enctype="multipart/form-data">
                         @csrf
                         @method('PATCH')
-                        <div class="row">
-                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="edit-nama">Nama Kelas</label>
                                     <input type="text" class="form-control" name="nama_kelas" id="edit-nama"
@@ -104,12 +102,10 @@
                                         required />
                                 </div>
                                
-                            </div>
-                        </div>
                 <div class="modal-footer">
                     <input type="hidden" name="id" id="edit-id" />
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                    <button type="submit" class="btn btn-success">Update</button>
+                    <button type="submit" class="btn btn-success">Ubah</button>
                     </form>
                 </div>
             </div>

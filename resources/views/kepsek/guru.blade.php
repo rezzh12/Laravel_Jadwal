@@ -23,7 +23,7 @@
                         @foreach ($guru as $gr)
                             <tr>
                                 <td class="text-center">{{ $no++ }}</td>
-                                <td class="text-center">{{ $gr->NIP }}</td>
+                                <td class="text-center">{{ $gr->nip }}</td>
                                 <td class="text-center">{{ $gr->nama_guru}}</td>
                                 <td class="text-center">{{ $gr->alamat}}</td>
                                 <td class="text-center">{{ $gr->jenis_kelamin}}</td>

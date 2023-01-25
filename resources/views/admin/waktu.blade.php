@@ -31,7 +31,7 @@
                                     <div class="btn-group" role="group" aria-label="Basic example">
                                         <button type="button" id="btn-edit-jadwal" class="btn btn-success"
                                             data-toggle="modal" data-target="#editJadwalModal"
-                                            data-id="{{ $wkt->id }}" style="margin-right:20px;">EDIT</button>
+                                            data-id="{{ $wkt->id }}" style="margin-right:20px;">UBAH</button>
                                             
                                             {!! Form::open(['url' => 'admin/waktu/delete/'.$wkt->id, 'method' => 'POST']) !!}
                                         {{ Form::button('HAPUS', ['class' => 'btn btn-danger', 'onclick' => "deleteConfirmation('".$wkt->id."')"]) }}
@@ -51,7 +51,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Tambah Data Jadwal</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Tambah Data Waktu</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -75,7 +75,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                    <button type="submit" class="btn btn-primary">Kirim</button>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
                     </form>
                 </div>
             </div>
@@ -88,7 +88,7 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Edit Data Jadwal</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Ubah Data Jadwal</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -113,7 +113,7 @@
                 <div class="modal-footer">
                     <input type="hidden" name="id" id="edit-id" />
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                    <button type="submit" class="btn btn-success">Update</button>
+                    <button type="submit" class="btn btn-success">Ubah</button>
                     </form>
                 </div>
             </div>

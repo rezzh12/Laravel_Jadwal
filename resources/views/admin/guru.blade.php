@@ -25,7 +25,7 @@
                         @foreach ($guru as $gr)
                             <tr>
                                 <td class="text-center">{{ $no++ }}</td>
-                                <td class="text-center">{{ $gr->NIP }}</td>
+                                <td class="text-center">{{ $gr->nip }}</td>
                                 <td class="text-center">{{ $gr->nama_guru}}</td>
                                 <td class="text-center">{{ $gr->alamat}}</td>
                                 <td class="text-center">{{ $gr->jenis_kelamin}}</td>
@@ -33,7 +33,7 @@
                                     <div class="btn-group" role="group" aria-label="Basic example">
                                         <button type="button" id="btn-edit-jadwal" class="btn btn-success"
                                             data-toggle="modal" data-target="#editJadwalModal"
-                                            data-id="{{ $gr->id }}" style="margin-right:20px;">EDIT</button>
+                                            data-id="{{ $gr->id }}" style="margin-right:20px;">UBAH</button>
                                             
                                             {!! Form::open(['url' => 'admin/guru/delete/'.$gr->id, 'method' => 'POST']) !!}
                                         {{ Form::button('HAPUS', ['class' => 'btn btn-danger', 'onclick' => "deleteConfirmation('".$gr->nama."')"]) }}
@@ -84,7 +84,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                    <button type="submit" class="btn btn-primary">Kirim</button>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
                     </form>
                 </div>
             </div>
@@ -94,10 +94,10 @@
     <!--Ubah Data-->
      <!-- UBAH DATA -->
      <div class="modal fade" id="editJadwalModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Edit Data Guru</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Ubah Data Guru</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -130,7 +130,7 @@
                 <div class="modal-footer">
                     <input type="hidden" name="id" id="edit-id" />
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                    <button type="submit" class="btn btn-success">Update</button>
+                    <button type="submit" class="btn btn-success">Ubah</button>
                     </form>
                 </div>
             </div>
@@ -150,7 +150,7 @@ $(function() {
                     dataType: 'json',
                     success: function(res) {
                         $('#edit-nip').val(res.nip);
-                        $('#edit-nama').val(res.nama);
+                        $('#edit-nama').val(res.nama_guru);
                         $('#edit-alamat').val(res.alamat);
                         $('#edit-jenis_kelamin').val(res.jenis_kelamin);
                         $('#edit-id').val(res.id);

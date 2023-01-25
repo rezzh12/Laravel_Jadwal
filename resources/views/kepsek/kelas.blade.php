@@ -33,77 +33,7 @@
         </div>
     </div>
 
-    <!-- Tambah Jadwal -->
-    <div class="modal fade" id="tambahJadwalModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Tambah Data Jadwal</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form method="post" action="{{ route('admin.kelas.submit') }}" enctype="multipart/form-data">
-                        @csrf
-                        <div class="form-group">
-                            <label for="nama_kegiatan">Nama Kelas</label>
-                            <input type="text" class="form-control" name="nama_kelas" id="nama_kelas" required />
-                        </div>
-                        <div class="form-group">
-                            <label for="jenis_kegiatan">Kapasitas</label>
-                            <input type="number" class="form-control" name="kapasitas" id="kapasitas" required />
-                        </div>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                    <button type="submit" class="btn btn-primary">Kirim</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!--Ubah Data-->
-     <!-- UBAH DATA -->
-     <div class="modal fade" id="editJadwalModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Edit Data Jadwal</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form method="post" action="{{ route('admin.kelas.update') }}" enctype="multipart/form-data">
-                        @csrf
-                        @method('PATCH')
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="edit-nama">Nama Kelas</label>
-                                    <input type="text" class="form-control" name="nama_kelas" id="edit-nama"
-                                        required />
-                                </div>
-                                <div class="form-group">
-                                    <label for="edit-jenis">Jenis Kegiatan</label>
-                                    <input type="number" class="form-control" name="kapasitas" id="edit-kapasitas"
-                                        required />
-                                </div>
-                               
-                            </div>
-                        </div>
-                <div class="modal-footer">
-                    <input type="hidden" name="id" id="edit-id" />
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                    <button type="submit" class="btn btn-success">Update</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+   
     @stop
 
     @section('js')

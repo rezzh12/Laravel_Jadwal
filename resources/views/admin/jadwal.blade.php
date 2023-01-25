@@ -49,7 +49,7 @@
                                     <div class="btn-group" role="group" aria-label="Basic example">
                                         <button type="button" id="btn-edit-jadwal" class="btn btn-success"
                                             data-toggle="modal" data-target="#editJadwalModal"
-                                            data-id="{{ $jdl->id }}" style="margin-right:20px;">EDIT</button>
+                                            data-id="{{ $jdl->id }}" style="margin-right:20px;">UBAH</button>
                                             
                                             {!! Form::open(['url' => 'admin/jadwal/delete/'.$jdl->id, 'method' => 'POST']) !!}
                                         {{ Form::button('HAPUS', ['class' => 'btn btn-danger', 'onclick' => "deleteConfirmation('".$jdl->jadwals->nama_guru."')"]) }}
@@ -114,7 +114,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                    <button type="submit" class="btn btn-primary">Kirim</button>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
                     </form>
                 </div>
             </div>
@@ -174,7 +174,7 @@
                 <div class="modal-footer">
                     <input type="hidden" name="id" id="edit-id" />
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                    <button type="submit" class="btn btn-success">Update</button>
+                    <button type="submit" class="btn btn-success">Ubah</button>
                     </form>
                 </div>
             </div>

@@ -76,31 +76,7 @@
           <!-- right col -->
         </div>
         <!-- /.row (main row) -->
-      </div
-
-      <div class="card-body">
-                        <div class="row">
-                        <div class="col-12">
-                        <div class="card">
-								        <div class="card-header">
-									      <div class="card-head-row">
-										    <div class="card-title">Statistik Login User</div>
-										    <div class="card-tools">											
-										</div>
-									</div>
-								</div>
-								<div class="card-body">
-									<div class="chart-container" style="min-height: 375px">
-										<canvas id="statisticsChart"></canvas>
-									</div>
-									<div id="myChartLegend"></div>
-								</div>
-							</div>
-                        </div>
-								</div>
-								</div>
-								</div>
-								</div>
+</div>
 @stop
 
 @section('js')
@@ -128,20 +104,5 @@
                 icon: 'error',
             })
         @endif
-        var ctx = document.getElementById('statisticsChart').getContext('2d');
-var statisticsChart = new Chart(ctx, {
-	type: 'line',
-	data: {
-		labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-		datasets: [ {
-			label: "User Melakukan Login",
-			borderColor: '#177dff',
-			pointBackgroundColor: 'rgba(23, 125, 255, 0.6)',
-			pointRadius: 0,
-			backgroundColor: 'rgba(23, 125, 255, 0.4)',
-			legendColor: '#177dff',
-			fill: true,
-			borderWidth: 2,
-    }]}})
     </script>
     @stop
