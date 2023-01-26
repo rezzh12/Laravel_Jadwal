@@ -41,10 +41,8 @@
         @if($jadwal->isEmpty())
 <div class="container-fluid">
         <div class="card card-default">
-            <div class="card-header">{{ __('Pengelolaan Data Jadwal') }}</div>
+            <div class="card-header">{{ __('Data Jadwal Mata Pelajaran') }}</div>
             <div class="card-body">
-          <h1 class="text-center"> Admin Belum Membuat Jadwal</h1>
-          <h1 class="text-center"> Atau Belum di Approve oleh Kepala Sekolah</h1>
                 
     </div>
 @else

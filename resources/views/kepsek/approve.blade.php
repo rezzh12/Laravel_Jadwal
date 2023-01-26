@@ -6,17 +6,15 @@
 @if($jadwal->isEmpty())
 <div class="container-fluid">
         <div class="card card-default">
-            <div class="card-header">{{ __('Pengelolaan Data Jadwal') }}</div>
+            <div class="card-header">{{ __('Pengelolaan Persetujuan Jadwal') }}</div>
             <div class="card-body">
-          <h1 class="text-center"> Kurikulum Belum Membuat Jadwal</h1>
-          <h1 class="text-center"> Maka Tidak Ada Yang Harus Di Approve</h1>
                 
             </div>
     </div>
 @else
     <div class="container-fluid">
         <div class="card card-default">
-            <div class="card-header">{{ __('Pengelolaan Data Jadwal') }}</div>
+            <div class="card-header">{{ __('Pengelolaan Persetujuan Jadwal') }}</div>
             <div class="card-body">
             <a href="approve/submit" class="btn btn-primary "><i class="fa fa-plus"></i>Setujui Jadwal</a>
             <a href="approve/destroy" class="btn btn-danger "><i class="fa fa-plus"></i>Tolak Jadwal</a>
@@ -80,7 +78,7 @@ $(function() {
 
         @if(session('status'))
             Swal.fire({
-                title: 'Congratulations!',
+                title: 'Selamat!',
                 text: "{{ session('status') }}",
                 icon: 'Success',
                 timer: 3000

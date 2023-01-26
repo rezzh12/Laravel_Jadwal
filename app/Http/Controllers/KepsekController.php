@@ -105,7 +105,7 @@ class KepsekController extends Controller
         $admin = User::where('roles_id', 1)->get();
         Notification::send($admin, new approveNotification($user));
 
-        Session::flash('status', 'Approve Jadwal berhasil!!!');
+        Session::flash('status', 'Data Jadwal Berhasil Disetujui!!!');
         return redirect()->route('kepsek.jadwal.jadwal1');
     }
     public function approve_destroy()
@@ -115,7 +115,7 @@ class KepsekController extends Controller
         $admin = User::where('roles_id', 1)->get();
         Notification::send($admin, new disApproveNotification($pengguna));
 
-        Session::flash('status', 'Tolak Jadwal berhasil!!!');
+        Session::flash('status', 'Data Jadwal Berhasil Ditolak!!!');
         return redirect()->route('kepsek.jadwal.jadwal1');
     }
 }

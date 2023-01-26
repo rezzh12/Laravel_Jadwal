@@ -135,7 +135,7 @@ $(function() {
 
         @if(session('status'))
             Swal.fire({
-                title: 'Congratulations!',
+                title: 'Selamat!',
                 text: "{{ session('status') }}",
                 icon: 'Success',
                 timer: 3000

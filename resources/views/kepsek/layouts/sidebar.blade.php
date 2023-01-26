@@ -79,7 +79,7 @@
               <li class="nav-item">
                 <a href="approve" class="nav-link active">
                   <i class="fas fa-check nav-icon"></i>
-                  <p>Data Approve</p>
+                  <p>Data Persetujuan</p>
                 </a>
               </li>
         </ul>
