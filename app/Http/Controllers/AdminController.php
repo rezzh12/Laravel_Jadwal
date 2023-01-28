@@ -122,9 +122,11 @@ class AdminController extends Controller
         $validate = $req->validate([
         'mapel'=> 'required|max:255',
         'semester'=> 'required',
+        'id_jurusan'=> 'required',
     ]);
     $mapel->mapel = $req->get('mapel');
     $mapel->semester = $req->get('semester');
+    $mapel->jurusan_id = $req->get('id_jurusan');
     $mapel->save();
 
     Session::flash('status', 'Ubah data mata pelajaran berhasil!!!');
@@ -307,7 +309,7 @@ class AdminController extends Controller
     }
 
 
-    public function jadwal()
+    public function jadwal(Request $req)
     {
         $user = Auth::user();
         $guru = guru::all();
@@ -319,6 +321,7 @@ class AdminController extends Controller
         $jadwal1['jadwal'] = jadwal::with('jadwal1')->get();
         $jadwal1['jadwal'] = jadwal::with('jadwal2')->get();
         $jadwal1['jadwal'] = jadwal::with('jadwal3')->get();
+        
         return view('admin.jadwal', compact('user', 'guru','waktu','kelas','mapel','jadwal','jadwal1'));
     }
 
@@ -345,19 +348,18 @@ class AdminController extends Controller
         return response()->json($jadwal);
     }
 
-    public function update_jadwal(Request $req)
-    { 
-        $jadwal= jadwal::find($req->get('id'));
-        $validate = $req->validate([
-        'id_guru'=> 'required|max:255',
-        'id_waktu'=> 'required',
-        'id_kelas'=> 'required',
-        'id_mapel'=> 'required',
-    ]);
-    $jadwal->guru_id = $req->get('id_guru');
-    $jadwal->waktu_id = $req->get('id_waktu');
-    $jadwal->kelas_id = $req->get('id_kelas');
-    $jadwal->mapel_id = $req->get('id_mapel');
+    public function updatejadwal(Request $req)
+    { $validate = $req->validate([
+            'guru'=> 'required|max:255',
+            'waktu'=> 'required',
+            'kelas'=> 'required',
+            'mapel'=> 'required',
+        ]);
+    $jadwal = jadwal::find($req->get('id'));
+    $jadwal->guru_id = $req->get('guru');
+    $jadwal->waktu_id = $req->get('waktu');
+    $jadwal->kelas_id = $req->get('kelas');
+    $jadwal->mapel_id = $req->get('mapel');
     $jadwal->save();
 
     Session::flash('status', 'Ubah data jadwal berhasil!!!');

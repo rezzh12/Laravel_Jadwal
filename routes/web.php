@@ -84,10 +84,10 @@ Route::get('admin/jadwal',
     [App\Http\Controllers\AdminController::class, 'jadwal'])->name('admin.guru.waktu.kelas.mapel.jadwal.jadwal1')->middleware('is_admin');
 Route::post('admin/jadwal', 
     [App\Http\Controllers\AdminController::class, 'submit_jadwal'])->name('admin.jadwal.submit')->middleware('is_admin');
-Route::get('admin/ajaxadmin/dataJadwal/{id}', 
+Route::get('admin/ajaxadmin/dataJadwals/{id}', 
     [App\Http\Controllers\AdminController::class, 'getDataJadwal']);
 Route::patch('admin/jadwal', 
-    [App\Http\Controllers\AdminController::class, 'update_jadwal'])->name('admin.jadwal.update')->middleware('is_admin');
+    [App\Http\Controllers\AdminController::class, 'updatejadwal'])->name('admin.jadwal.update')->middleware('is_admin');
 Route::post('admin/jadwal/delete/{id}', 
     [App\Http\Controllers\AdminController::class, 'delete_jadwal'])->name('admin.jadwal.delete')->middleware('is_admin');
 Route::post('admin/jadwal/markAsRead/{id}', 

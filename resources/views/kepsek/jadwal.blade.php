@@ -8,8 +8,6 @@
         <div class="card card-default">
             <div class="card-header">{{ __('Pengelolaan Data Jadwal') }}</div>
             <div class="card-body">
-          <h1 class="text-center"> Andmin Belum Membuat Jadwal</h1>
-          <h1 class="text-center"> Atau Belum di Approve oleh Kepala Sekolah</h1>
                 
     </div>
 @else

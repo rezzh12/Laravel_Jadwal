@@ -113,8 +113,8 @@
                                         required />
                                 </div>
                                 <div class="form-group">
-                            <label for="jurusan">Jurusan</label>
-                           <select class="form-control" name="id_jurusan" id="jurusan">
+                            <label for="edit-jurusan">Jurusan</label>
+                           <select class="form-control" name="id_jurusan" id="edit-jurusan">
                             @foreach($jurusan as $jr)
                             <option value="{{$jr->id}}">{{$jr->jurusan}}</option>
                             @endforeach
@@ -145,6 +145,7 @@ $(function() {
                     success: function(res) {
                         $('#edit-mapel').val(res.mapel);
                         $('#edit-semester').val(res.semester);
+                        $('#edit-jurusan').val(res.jurusan_id);
                         $('#edit-id').val(res.id);
                     },
                 });
@@ -183,6 +184,7 @@ $(function() {
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
+                cancelButtonText: 'Batal',
                 confirmButtonText: 'Ya, hapus saja!',
             }). then((result) => {
                 if(result.value) {

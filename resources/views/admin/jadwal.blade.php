@@ -6,14 +6,15 @@
                       <div class="alert alert-warning alert-dismissible fade show" role="alert">
                       {{ $notification->data['pesan']}} <strong> {{ $notification->data['name']}} </strong>
                       {!! Form::open(['url' => 'admin/jadwal/markAsRead/'.$notification->id, 'method' => 'POST']) !!}
-                                        {{ Form::button('Read', ['class' => 'btn btn-danger', 'onclick' => "markAsRead('".$notification->id."')"]) }}
+                                        {{ Form::button('Baca', ['class' => 'btn btn-danger', 'onclick' => "markAsRead('".$notification->id."')"]) }}
                                     {!! Form::close() !!}
                       </div>
                       {{-- {{ $notification->markAsRead() }} --}}
                     @endforeach
     <div class="container-fluid">
         <div class="card card-default">
-            <div class="card-header">{{ __('Pengelolaan Data Jadwal') }}</div>
+            <div class="card-header">{{ __('Pengelolaan Data Jadwal') }}
+            </div>
             <div class="card-body">
             <button class="btn btn-primary" data-toggle="modal" data-target="#tambahJadwalModal"><i class="fa fa-plus"></i>
                     Tambah Data</button>
@@ -47,7 +48,7 @@
                                 <td class="text-center">{{ $jdl->jadwal1->jam_keluar}}</td>
                                 <td class="text-center">
                                     <div class="btn-group" role="group" aria-label="Basic example">
-                                        <button type="button" id="btn-edit-jadwal" class="btn btn-success"
+                                    <button type="button" id="btn-edit-jadwal" class="btn btn-success"
                                             data-toggle="modal" data-target="#editJadwalModal"
                                             data-id="{{ $jdl->id }}" style="margin-right:20px;">UBAH</button>
                                             
@@ -137,32 +138,32 @@
                         @csrf
                         @method('PATCH')
                         <div class="form-group">
-                            <label for="id_guru">Guru</label>
-                           <select class="form-control" name="id_guru" id="edit-id_guru">
+                            <label for="edit-guru">Guru</label>
+                           <select class="form-control" name="guru" id="edit-guru">
                             @foreach($guru as $gr)
                             <option value="{{$gr->id}}">{{$gr->nama_guru}}</option>
                             @endforeach
                            </select>
                         </div>
                         <div class="form-group">
-                            <label for="id_mapel">Mata Pelajaran</label>
-                           <select class="form-control" name="id_mapel" id="edit-id_mapel">
+                            <label for="edit-mapel">Mata Pelajaran</label>
+                           <select class="form-control" name="mapel" id="edit-mapel">
                             @foreach($mapel as $mpl)
                             <option value="{{$mpl->id}}">{{$mpl->mapel}}</option>
                             @endforeach
                            </select>
                         </div>
                         <div class="form-group">
-                            <label for="id_kelas">kelas</label>
-                           <select class="form-control" name="id_kelas" id="edit-id_kelas">
+                            <label for="edit-kelas">kelas</label>
+                           <select class="form-control" name="kelas" id="edit-kelas">
                             @foreach($kelas as $kls)
                             <option value="{{$kls->id}}">{{$kls->nama_kelas}}</option>
                             @endforeach
                            </select>
                         </div>
                         <div class="form-group">
-                            <label for="id_waktu">waktu</label>
-                           <select class="form-control" name="id_waktu" id="edit-id_waktu">
+                            <label for="edit-waktu">waktu</label>
+                           <select class="form-control" name="waktu" id="edit-waktu">
                             @foreach($waktu as $wkt)
                             <option value="{{$wkt->id}}">{{$wkt->hari}}, {{$wkt->jam_masuk}} - {{$wkt->jam_keluar}}</option>
                             @endforeach
@@ -186,15 +187,17 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
 $(function() {
-            $(document).on('click', '#btn-edit-mapel', function() {
+            $(document).on('click', '#btn-edit-jadwal', function() {
                 let id = $(this).data('id');
                 $.ajax({
                     type: "get",
-                    url: "{{ url('/admin/ajaxadmin/dataJadwal') }}/" + id,
+                    url: "{{ url('/admin/ajaxadmin/dataJadwals') }}/" + id,
                     dataType: 'json',
                     success: function(res) {
-                        $('#edit-mapel').val(res.mapel);
-                        $('#edit-semester').val(res.semester);
+                        $('#edit-guru').val(res.guru_id);
+                        $('#edit-mapel').val(res.mapel_id);
+                        $('#edit-kelas').val(res.kelas_id);
+                        $('#edit-waktu').val(res.waktu_id);
                         $('#edit-id').val(res.id);
                     },
                 });
@@ -233,6 +236,7 @@ $(function() {
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
+                cancelButtonText: 'Batal',
                 confirmButtonText: 'Ya, hapus saja!',
             }). then((result) => {
                 if(result.value) {
@@ -257,6 +261,7 @@ $(function() {
                 }
             });
         }
+
     </script>
 
     @stop
