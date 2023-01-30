@@ -32,11 +32,7 @@ class Jadwal extends Model
         return $this->belongsTo(guru::class, 'guru_id')
                         ->withDefault(['guru' => 'guru belum dipilih']);
     }
-    public function jadwal1()
-    {
-        return $this->belongsTo(waktu::class, 'waktu_id')
-                        ->withDefault(['waktu' => 'waktu belum dipilih']);
-    }
+
     public function jadwal2()
     {
         return $this->belongsTo(kelas::class, 'kelas_id')

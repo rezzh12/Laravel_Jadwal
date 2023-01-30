@@ -21,8 +21,8 @@ Auth::routes();
 
 Route::get('admin/home',
     [App\Http\Controllers\AdminController::class, 'index'])->name('admin.home.data1.data2.data3.data4')->middleware('is_admin');
-    Route::post('admin/home/markAsRead/{id}', 
-    [App\Http\Controllers\AdminController::class, 'markAs'])->name('markAs')->middleware('is_admin');
+Route::post('admin/home/markAs/{id}', 
+    [App\Http\Controllers\AdminController::class, 'markAs'])->name('markAsRead')->middleware('is_admin');
 Route::get('admin/kelas',
     [App\Http\Controllers\AdminController::class, 'kelas'])->name('admin.kelas')->middleware('is_admin');
 Route::post('admin/kelas', 
@@ -44,17 +44,6 @@ Route::patch('admin/mapel',
     [App\Http\Controllers\AdminController::class, 'update_mapel'])->name('admin.mapel.update')->middleware('is_admin');
     Route::post('admin/mapel/delete/{id}', 
     [App\Http\Controllers\AdminController::class, 'delete_mapel'])->name('admin.mapel.delete')->middleware('is_admin');
-
- Route::get('admin/waktu',
-    [App\Http\Controllers\AdminController::class, 'waktu'])->name('admin.waktu')->middleware('is_admin');
-Route::post('admin/waktu', 
-    [App\Http\Controllers\AdminController::class, 'submit_waktu'])->name('admin.waktu.submit')->middleware('is_admin');
-Route::get('admin/ajaxadmin/dataWaktu/{id}', 
-    [App\Http\Controllers\AdminController::class, 'getDataWaktu']);
-Route::patch('admin/waktu', 
-    [App\Http\Controllers\AdminController::class, 'update_waktu'])->name('admin.waktu.update')->middleware('is_admin');
-    Route::post('admin/waktu/delete/{id}', 
-    [App\Http\Controllers\AdminController::class, 'delete_waktu'])->name('admin.waktu.delete')->middleware('is_admin');
 
  Route::get('admin/guru',
     [App\Http\Controllers\AdminController::class, 'guru'])->name('admin.guru')->middleware('is_admin');
@@ -81,13 +70,15 @@ Route::patch('admin/jurusan',
     
     
 Route::get('admin/jadwal',
-    [App\Http\Controllers\AdminController::class, 'jadwal'])->name('admin.guru.waktu.kelas.mapel.jadwal.jadwal1')->middleware('is_admin');
+    [App\Http\Controllers\AdminController::class, 'jadwal'])->name('admin.guru.kelas.mapel.jadwal.jadwal1')->middleware('is_admin');
 Route::post('admin/jadwal', 
     [App\Http\Controllers\AdminController::class, 'submit_jadwal'])->name('admin.jadwal.submit')->middleware('is_admin');
 Route::get('admin/ajaxadmin/dataJadwals/{id}', 
     [App\Http\Controllers\AdminController::class, 'getDataJadwal']);
+Route::get('admin/ajaxadmin/dataJadwal', 
+    [App\Http\Controllers\AdminController::class, 'getDataJadwalhari'])->name('admin.jadwal.cari');
 Route::patch('admin/jadwal', 
-    [App\Http\Controllers\AdminController::class, 'updatejadwal'])->name('admin.jadwal.update')->middleware('is_admin');
+    [App\Http\Controllers\AdminController::class, 'update_jadwal'])->name('admin.jadwal.update')->middleware('is_admin');
 Route::post('admin/jadwal/delete/{id}', 
     [App\Http\Controllers\AdminController::class, 'delete_jadwal'])->name('admin.jadwal.delete')->middleware('is_admin');
 Route::post('admin/jadwal/markAsRead/{id}', 
@@ -104,14 +95,14 @@ Route::get('kepsek/mapel',
     [App\Http\Controllers\KepsekController::class, 'mapel'])->name('kepsek.mapel.mapel1.jurusan')->middleware('kepsek');
 Route::get('kepsek/guru',
     [App\Http\Controllers\KepsekController::class, 'guru'])->name('kepsek.guru')->middleware('kepsek');
-Route::get('kepsek/waktu',
-    [App\Http\Controllers\KepsekController::class, 'waktu'])->name('kepsek.waktu')->middleware('kepsek');
 Route::get('kepsek/jurusan',
     [App\Http\Controllers\KepsekController::class, 'jurusan'])->name('kepsek.jurusan')->middleware('kepsek');
 Route::get('kepsek/jadwal',
     [App\Http\Controllers\KepsekController::class, 'jadwal'])->name('kepsek.jadwal.jadwal1')->middleware('kepsek');
+Route::get('kepsek/print_jadwal',
+    [App\Http\Controllers\KepsekController::class, 'print_jadwal'])->name('kepsek.print.jadwal.jadwal1')->middleware('kepsek');
 Route::get('kepsek/approve',
-    [App\Http\Controllers\KepsekController::class, 'approve'])->name('kepsek.jadwal.jadwal1')->middleware('kepsek');
+    [App\Http\Controllers\KepsekController::class, 'approve'])->name('kepsek.jadwal.jadwal1.approve')->middleware('kepsek');
 Route::get('kepsek/approve/submit',
     [App\Http\Controllers\KepsekController::class, 'approve_submit'])->name('kepsek.jadwal.jadwal1.submit')->middleware('kepsek');
 Route::get('kepsek/approve/destroy',

@@ -313,34 +313,35 @@ class AdminController extends Controller
     {
         $user = Auth::user();
         $guru = guru::all();
-        $waktu = waktu::all();
         $kelas = kelas::all();
         $mapel = mapel::all();
-        $jadwal =  jadwal::all();
+        $jadwal = jadwal::where('hari','LIKE','%'.$req->hari.'%')->where('status',0)->get();
         $jadwal1['jadwal'] = jadwal::with('jadwals')->get();
-        $jadwal1['jadwal'] = jadwal::with('jadwal1')->get();
         $jadwal1['jadwal'] = jadwal::with('jadwal2')->get();
         $jadwal1['jadwal'] = jadwal::with('jadwal3')->get();
-        
-        return view('admin.jadwal', compact('user', 'guru','waktu','kelas','mapel','jadwal','jadwal1'));
+        return view('admin.jadwal', compact('user', 'guru','kelas','mapel','jadwal','jadwal1'));
     }
 
     public function submit_jadwal(Request $req)
     { $validate = $req->validate([
-        'id_guru'=> 'required|max:255',
-        'id_waktu'=> 'required',
-        'id_kelas'=> 'required',
-        'id_mapel'=> 'required',
+        'guru'=> 'required|max:255',
+        'kelas'=> 'required',
+        'mapel'=> 'required',
+        'hari'=> 'required|max:255',
+        'jam_masuk'=> 'required',
+        'jam_keluar'=> 'required',
     ]);
     $jadwal = new jadwal;
-    $jadwal->guru_id = $req->get('id_guru');
-    $jadwal->waktu_id = $req->get('id_waktu');
-    $jadwal->kelas_id = $req->get('id_kelas');
-    $jadwal->mapel_id = $req->get('id_mapel');
+    $jadwal->guru_id = $req->get('guru');
+    $jadwal->kelas_id = $req->get('kelas');
+    $jadwal->mapel_id = $req->get('mapel');
+    $jadwal->hari = $req->get('hari');
+    $jadwal->jam_masuk = $req->get('jam_masuk');
+    $jadwal->jam_keluar = $req->get('jam_keluar');
     $jadwal->save();
 
     Session::flash('status', 'Tambah data jadwal berhasil!!!');
-    return redirect()->route('admin.guru.waktu.kelas.mapel.jadwal.jadwal1');
+    return redirect()->route('admin.guru.kelas.mapel.jadwal.jadwal1');
     }
     public function getDataJadwal($id)
     {
@@ -348,22 +349,27 @@ class AdminController extends Controller
         return response()->json($jadwal);
     }
 
-    public function updatejadwal(Request $req)
+
+    public function update_jadwal(Request $req)
     { $validate = $req->validate([
-            'guru'=> 'required|max:255',
-            'waktu'=> 'required',
-            'kelas'=> 'required',
-            'mapel'=> 'required',
+        'guru'=> 'required|max:255',
+        'kelas'=> 'required',
+        'mapel'=> 'required',
+        'hari'=> 'required|max:255',
+        'jam_masuk'=> 'required',
+        'jam_keluar'=> 'required',
         ]);
     $jadwal = jadwal::find($req->get('id'));
     $jadwal->guru_id = $req->get('guru');
-    $jadwal->waktu_id = $req->get('waktu');
     $jadwal->kelas_id = $req->get('kelas');
     $jadwal->mapel_id = $req->get('mapel');
+    $jadwal->hari = $req->get('hari');
+    $jadwal->jam_masuk = $req->get('jam_masuk');
+    $jadwal->jam_keluar = $req->get('jam_keluar');
     $jadwal->save();
 
     Session::flash('status', 'Ubah data jadwal berhasil!!!');
-    return redirect()->route('admin.guru.waktu.kelas.mapel.jadwal.jadwal1');
+    return redirect()->route('admin.guru.kelas.mapel.jadwal.jadwal1');
     }
 
     public function delete_jadwal($id)
@@ -372,13 +378,12 @@ class AdminController extends Controller
         $jadwal->delete();
 
         Session::flash('status', 'Hapus data jadwal berhasil!!!');
-    return redirect()->route('admin.guru.waktu.kelas.mapel.jadwal.jadwal1');
+    return redirect()->route('admin.guru.kelas.mapel.jadwal.jadwal1');
     }
 
     public function print_jadwal(){
         $jadwal = jadwal::all();
         $jadwal1['jadwal'] = jadwal::with('jadwals')->get();
-        $jadwal1['jadwal'] = jadwal::with('jadwal1')->get();
         $jadwal1['jadwal'] = jadwal::with('jadwal2')->get();
         $jadwal1['jadwal'] = jadwal::with('jadwal3')->get();
 
@@ -391,7 +396,7 @@ class AdminController extends Controller
     DB::table('notifications')->where('id', $request->id)
             ->update(['read_at' => now()]);
             Session::flash('status', 'Read data berhasil!!!');
-            return redirect()->route('admin.guru.waktu.kelas.mapel.jadwal.jadwal1');
+            return redirect()->route('admin.guru.kelas.mapel.jadwal.jadwal1');
 }
     public function markAs(Request $request)
 {

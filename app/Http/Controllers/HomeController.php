@@ -34,11 +34,10 @@ class HomeController extends Controller
         return view('landing');
     }
 
-    public function jadwal()
+    public function jadwal(Request $req)
     {
-        $jadwal =  jadwal::where('status',1)->get();
+        $jadwal = jadwal::where('hari','LIKE','%'.$req->hari.'%')->where('status',1)->get();
         $jadwal1['jadwal'] = jadwal::with('jadwals')->get();
-        $jadwal1['jadwal'] = jadwal::with('jadwal1')->get();
         $jadwal1['jadwal'] = jadwal::with('jadwal2')->get();
         $jadwal1['jadwal'] = jadwal::with('jadwal3')->get();
         return view('jadwals', compact('jadwal','jadwal1'));
@@ -46,7 +45,6 @@ class HomeController extends Controller
     public function print_jadwal(){
         $jadwal = jadwal::all();
         $jadwal1['jadwal'] = jadwal::with('jadwals')->get();
-        $jadwal1['jadwal'] = jadwal::with('jadwal1')->get();
         $jadwal1['jadwal'] = jadwal::with('jadwal2')->get();
         $jadwal1['jadwal'] = jadwal::with('jadwal3')->get();
 

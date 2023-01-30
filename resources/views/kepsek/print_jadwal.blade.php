@@ -33,9 +33,9 @@
                                 <td class="text-center">{{ $jdl->jadwals->nama_guru }}</td>
                                 <td class="text-center">{{ $jdl->jadwal3->mapel}}</td>
                                 <td class="text-center">{{ $jdl->jadwal2->nama_kelas}}</td>
-                                <td class="text-center">{{ $jdl->jadwal1->hari}}</td>
-                                <td class="text-center">{{ $jdl->jadwal1->jam_masuk}}</td>
-                                <td class="text-center">{{ $jdl->jadwal1->jam_keluar}}</td>
+                                <td class="text-center">{{ $jdl->hari}}</td>
+                                <td class="text-center">{{ $jdl->jam_masuk}}</td>
+                                <td class="text-center">{{ $jdl->jam_keluar}}</td>
                             </tr>
                         @endforeach
                     </tbody>

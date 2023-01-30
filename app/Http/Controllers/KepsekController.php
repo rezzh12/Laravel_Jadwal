@@ -75,23 +75,22 @@ class KepsekController extends Controller
         return view('kepsek.jurusan', compact('user', 'jurusan'));
     }
 
-    public function jadwal()
+    public function jadwal(Request $req)
     {
         $user = Auth::user();
-        $jadwal =  jadwal::where('status',1)->get();
+        $jadwal = jadwal::where('hari','LIKE','%'.$req->hari.'%')->where('status',1)->get();
         $jadwal1['jadwal'] = jadwal::with('jadwals')->get();
-        $jadwal1['jadwal'] = jadwal::with('jadwal1')->get();
         $jadwal1['jadwal'] = jadwal::with('jadwal2')->get();
         $jadwal1['jadwal'] = jadwal::with('jadwal3')->get();
-        return view('kepsek.jadwal', compact('user','jadwal','jadwal1'));
+        return view('kepsek.jadwal', compact('user',
+        'jadwal','jadwal1'));
     }
 
-    public function approve()
+    public function approve(Request $req)
     {
         $user = Auth::user();
-        $jadwal =  jadwal::where('status',0)->get();
+        $jadwal = jadwal::where('hari','LIKE','%'.$req->hari.'%')->where('status',0)->get();
         $jadwal1['jadwal'] = jadwal::with('jadwals')->get();
-        $jadwal1['jadwal'] = jadwal::with('jadwal1')->get();
         $jadwal1['jadwal'] = jadwal::with('jadwal2')->get();
         $jadwal1['jadwal'] = jadwal::with('jadwal3')->get();
         return view('kepsek.approve', compact('user','jadwal','jadwal1'));
@@ -117,5 +116,14 @@ class KepsekController extends Controller
 
         Session::flash('status', 'Data Jadwal Berhasil Ditolak!!!');
         return redirect()->route('kepsek.jadwal.jadwal1');
+    }
+    public function print_jadwal(){
+        $jadwal = jadwal::all();
+        $jadwal1['jadwal'] = jadwal::with('jadwals')->get();
+        $jadwal1['jadwal'] = jadwal::with('jadwal2')->get();
+        $jadwal1['jadwal'] = jadwal::with('jadwal3')->get();
+
+        $pdf = PDF::loadview('print_jadwal',['jadwal'=>$jadwal],[ 'jadwal1'=>$jadwal1]);
+        return $pdf->download('data_jadwal.pdf');
     }
 }

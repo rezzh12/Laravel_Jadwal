@@ -64,13 +64,6 @@
               </li>
 
               <li class="nav-item">
-                <a href="waktu" class="nav-link active">
-                  <i class="far fa-bell nav-icon"></i>
-                  <p>Data Waktu</p>
-                </a>
-              </li>
-
-              <li class="nav-item">
                 <a href="jadwal" class="nav-link active">
                   <i class="far fa-bookmark nav-icon"></i>
                   <p>Data Jadwal</p>

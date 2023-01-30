@@ -15,6 +15,27 @@
         <div class="card card-default">
             <div class="card-header">{{ __('Pengelolaan Data Jadwal') }}</div>
             <div class="card-body">
+            <a href="{{ route('kepsek.print.jadwal.jadwal1') }}" target="_blank" class="btn btn-secondary"><i
+                        class="fas fa-print"></i> Cetak PDF</a>
+                        <hr>
+            <form method="get" action="{{ route('kepsek.jadwal.jadwal1') }}" enctype="multipart/form-data">
+                        <div class="row">
+                        <div class="col-md-2">
+                        <select name="hari" id="hari" class="form-control filter-select" onchange="filter()">
+                            <option value="">Pilih Hari</option>
+                            <option value="Senin">Senin</option>
+                            <option value="Selasa">Selasa</option>
+                            <option value="Rabu">Rabu</option>
+                            <option value="Kamis">Kamis</option>
+                            <option value="Jumat">Jumat</option>
+                            <option value="Sabtu">Sabtu</option>
+                        </select>
+</div>
+<div class="col-md-2">
+                        <button type="submit" class="btn btn-warning">Seleksi</button>
+</form>
+</div>
+
                 <table id="table-data" class="table table-bordered">
                     <thead>
                         <tr class="text-center">
@@ -32,14 +53,14 @@
                         @php $no=1; @endphp
                         @foreach ($jadwal as $jdl)
                             <tr>
-                                <td class="text-center">{{ $no++ }}</td>
+                            <td class="text-center">{{ $no++ }}</td>
                                 <td class="text-center">{{ $jdl->jadwals->nip }}</td>
                                 <td class="text-center">{{ $jdl->jadwals->nama_guru }}</td>
                                 <td class="text-center">{{ $jdl->jadwal3->mapel}}</td>
                                 <td class="text-center">{{ $jdl->jadwal2->nama_kelas}}</td>
-                                <td class="text-center">{{ $jdl->jadwal1->hari}}</td>
-                                <td class="text-center">{{ $jdl->jadwal1->jam_masuk}}</td>
-                                <td class="text-center">{{ $jdl->jadwal1->jam_keluar}}</td>
+                                <td class="text-center">{{ $jdl->hari}}</td>
+                                <td class="text-center">{{ $jdl->jam_masuk}}</td>
+                                <td class="text-center">{{ $jdl->jam_keluar}}</td>
                             </tr>
                         @endforeach
                         @endif

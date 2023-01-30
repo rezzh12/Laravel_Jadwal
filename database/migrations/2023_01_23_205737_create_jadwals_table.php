@@ -15,8 +15,10 @@ class CreateJadwalsTable extends Migration
     {
         Schema::create('jadwals', function (Blueprint $table) {
             $table->id();
+            $table->string('hari', 20);
+            $table->string('jam_masuk', 20);
+            $table->string('jam_keluar', 20);
             $table->foreignId('guru_id')->constrained();
-            $table->foreignId('waktu_id')->constrained();
             $table->foreignId('kelas_id')->constrained();
             $table->foreignId('mapel_id')->constrained();
             $table->boolean('status')->default(false);

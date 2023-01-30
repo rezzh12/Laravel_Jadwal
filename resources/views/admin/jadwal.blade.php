@@ -20,7 +20,25 @@
                     Tambah Data</button>
                     <a href="{{ route('admin.print.jadwal.jadwal1') }}" target="_blank" class="btn btn-secondary"><i
                         class="fas fa-print"></i> Cetak PDF</a>
-                <table id="table-data" class="table table-bordered">
+                        <hr>
+                        <form method="get" action="{{ route('admin.guru.kelas.mapel.jadwal.jadwal1') }}" enctype="multipart/form-data">
+                        <div class="row">
+                        <div class="col-md-2">
+                        <select name="hari" id="hari" class="form-control filter-select" onchange="filter()">
+                            <option value="">Pilih Hari</option>
+                            <option value="Senin">Senin</option>
+                            <option value="Selasa">Selasa</option>
+                            <option value="Rabu">Rabu</option>
+                            <option value="Kamis">Kamis</option>
+                            <option value="Jumat">Jumat</option>
+                            <option value="Sabtu">Sabtu</option>
+                        </select>
+                </div>
+                <div class="col-md-2">
+                                        <button type="submit" class="btn btn-warning">Seleksi</button>
+                </form>
+                </div>
+                <table id="datatable" class="table table-bordered">
                     <thead>
                         <tr class="text-center">
                             <th>NO</th>
@@ -34,7 +52,7 @@
                             <th>AKSI</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="tbody">
                         @php $no=1; @endphp
                         @foreach ($jadwal as $jdl)
                             <tr>
@@ -43,9 +61,9 @@
                                 <td class="text-center">{{ $jdl->jadwals->nama_guru }}</td>
                                 <td class="text-center">{{ $jdl->jadwal3->mapel}}</td>
                                 <td class="text-center">{{ $jdl->jadwal2->nama_kelas}}</td>
-                                <td class="text-center">{{ $jdl->jadwal1->hari}}</td>
-                                <td class="text-center">{{ $jdl->jadwal1->jam_masuk}}</td>
-                                <td class="text-center">{{ $jdl->jadwal1->jam_keluar}}</td>
+                                <td class="text-center">{{ $jdl->hari}}</td>
+                                <td class="text-center">{{ $jdl->jam_masuk}}</td>
+                                <td class="text-center">{{ $jdl->jam_keluar}}</td>
                                 <td class="text-center">
                                     <div class="btn-group" role="group" aria-label="Basic example">
                                     <button type="button" id="btn-edit-jadwal" class="btn btn-success"
@@ -78,39 +96,48 @@
                 <div class="modal-body">
                     <form method="post" action="{{ route('admin.jadwal.submit') }}" enctype="multipart/form-data">
                         @csrf
+                        <div class="row">
+                            <div class="col-md-6">
                         <div class="form-group">
-                            <label for="id_guru">Guru</label>
-                           <select class="form-control" name="id_guru" id="id_guru">
+                            <label for="guru">Guru</label>
+                           <select class="form-control" name="guru" id="guru">
                             @foreach($guru as $gr)
                             <option value="{{$gr->id}}">{{$gr->nama_guru}}</option>
                             @endforeach
                            </select>
                         </div>
                         <div class="form-group">
-                            <label for="id_mapel">Mata Pelajaran</label>
-                           <select class="form-control" name="id_mapel" id="id_mapel">
+                            <label for="mapel">Mata Pelajaran</label>
+                           <select class="form-control" name="mapel" id="mapel">
                             @foreach($mapel as $mpl)
                             <option value="{{$mpl->id}}">{{$mpl->mapel}}</option>
                             @endforeach
                            </select>
                         </div>
                         <div class="form-group">
-                            <label for="id_kelas">kelas</label>
-                           <select class="form-control" name="id_kelas" id="id_kelas">
+                            <label for="kelas">kelas</label>
+                           <select class="form-control" name="kelas" id="kelas">
                             @foreach($kelas as $kls)
                             <option value="{{$kls->id}}">{{$kls->nama_kelas}}</option>
                             @endforeach
                            </select>
                         </div>
-                        <div class="form-group">
-                            <label for="id_waktu">waktu</label>
-                           <select class="form-control" name="id_waktu" id="id_waktu">
-                            @foreach($waktu as $wkt)
-                            <option value="{{$wkt->id}}">{{$wkt->hari}}, {{$wkt->jam_masuk}} - {{$wkt->jam_keluar}}</option>
-                            @endforeach
-                           </select>
                         </div>
-                        
+                        <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="hari">Hari</label>
+                            <input type="day" class="form-control" name="hari" id="hari" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="jam_masuk">Jam Masuk</label>
+                            <input type="time" class="form-control" name="jam_masuk" id="jam_masuk" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="jam_keluar">Jam Keluar</label>
+                            <input type="time" class="form-control" name="jam_keluar" id="jam_keluar" required />
+                        </div>
+                        </div>
+                        </div>
 
                 </div>
                 <div class="modal-footer">
@@ -128,15 +155,17 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Edit Data Jadwal</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Ubah Data Jadwal</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="post" action="{{ route('admin.jadwal.update') }}" enctype="multipart/form-data">
+                   <form method="post" action="{{ route('admin.jadwal.update') }}" enctype="multipart/form-data">
                         @csrf
                         @method('PATCH')
+                        <div class="row">
+                        <div class="col-md-6">
                         <div class="form-group">
                             <label for="edit-guru">Guru</label>
                            <select class="form-control" name="guru" id="edit-guru">
@@ -161,14 +190,22 @@
                             @endforeach
                            </select>
                         </div>
-                        <div class="form-group">
-                            <label for="edit-waktu">waktu</label>
-                           <select class="form-control" name="waktu" id="edit-waktu">
-                            @foreach($waktu as $wkt)
-                            <option value="{{$wkt->id}}">{{$wkt->hari}}, {{$wkt->jam_masuk}} - {{$wkt->jam_keluar}}</option>
-                            @endforeach
-                           </select>
                         </div>
+
+                        <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="edit-hari">Hari</label>
+                            <input type="day" class="form-control" name="hari" id="edit-hari" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-jam_masuk">Jam Masuk</label>
+                            <input type="time" class="form-control" name="jam_masuk" id="edit-jam_masuk" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-jam_keluar">Jam Keluar</label>
+                            <input type="time" class="form-control" name="jam_keluar" id="edit-jam_keluar" required />
+                        </div>
+                     </div>
                         
 
                 </div>
@@ -185,6 +222,7 @@
 
     @section('js')
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
     <script>
 $(function() {
             $(document).on('click', '#btn-edit-jadwal', function() {
@@ -197,8 +235,10 @@ $(function() {
                         $('#edit-guru').val(res.guru_id);
                         $('#edit-mapel').val(res.mapel_id);
                         $('#edit-kelas').val(res.kelas_id);
-                        $('#edit-waktu').val(res.waktu_id);
                         $('#edit-id').val(res.id);
+                        $('#edit-hari').val(res.hari);
+                        $('#edit-jam_masuk').val(res.jam_masuk);
+                        $('#edit-jam_keluar').val(res.jam_keluar);
                     },
                 });
             });
