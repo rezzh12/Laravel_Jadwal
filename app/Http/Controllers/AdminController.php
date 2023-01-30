@@ -6,7 +6,7 @@ use App\Models\Guru;
 use App\Models\Kelas;
 use App\Models\Mapel;
 use App\Models\Jurusan;
-use App\Models\Waktu;
+
 use App\Models\Jadwal;
 use Session;
 use PDF;
@@ -142,60 +142,7 @@ class AdminController extends Controller
     return redirect()->route('admin.mapel1.mapel.jurusan');
     }
 
-    public function waktu()
-    {
-        $user = Auth::user();
-        $waktu = waktu::all();
-        return view('admin.waktu', compact('user', 'waktu'));
-    }
 
-    public function submit_waktu(Request $req)
-    { $validate = $req->validate([
-        'hari'=> 'required|max:255',
-        'jam_masuk'=> 'required',
-        'jam_keluar'=> 'required',
-    ]);
-    $waktu = new waktu;
-    $waktu->hari = $req->get('hari');
-    $waktu->jam_masuk = $req->get('jam_masuk');
-    $waktu->jam_keluar = $req->get('jam_keluar');
-    $waktu->save();
-
-    Session::flash('status', 'Tambah data waktu berhasil!!!');
-    return redirect()->route('admin.waktu');
-    }
-
-    public function getDataWaktu($id)
-    {
-        $waktu = waktu::find($id);
-        return response()->json($waktu);
-    }
-
-    public function update_waktu(Request $req)
-    { 
-        $waktu= waktu::find($req->get('id'));
-        $validate = $req->validate([
-        'hari'=> 'required|max:255',
-        'jam_masuk'=> 'required',
-        'jam_keluar'=> 'required',
-    ]);
-    $waktu->hari = $req->get('hari');
-    $waktu->jam_masuk = $req->get('jam_masuk');
-    $waktu->jam_keluar = $req->get('jam_keluar');
-    $waktu->save();
-
-    Session::flash('status', 'Ubah data waktu berhasil!!!');
-    return redirect()->route('admin.waktu');
-    }
-
-    public function delete_waktu($id)
-    {
-        $waktu = waktu::find($id);
-        $waktu->delete();
-
-        Session::flash('status', 'Hapus waktu kelas berhasil!!!');
-    return redirect()->route('admin.waktu');
-    }
 
     public function guru()
     {

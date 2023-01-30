@@ -6,7 +6,7 @@ use App\Models\Guru;
 use App\Models\Kelas;
 use App\Models\Mapel;
 use App\Models\Jurusan;
-use App\Models\Waktu;
+
 use App\Models\Jadwal;
 use Session;
 use PDF;
@@ -52,13 +52,6 @@ class KepsekController extends Controller
         $jurusan = jurusan::all();
         $mapel1['mapel'] = mapel::with('jurusans')->get();
         return view('kepsek.mapel', compact('user', 'mapel1','mapel','jurusan'));
-    }
-
-    public function waktu()
-    {
-        $user = Auth::user();
-        $waktu = waktu::all();
-        return view('kepsek.waktu', compact('user', 'waktu'));
     }
 
     public function guru()
