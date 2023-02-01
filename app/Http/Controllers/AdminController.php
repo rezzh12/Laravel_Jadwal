@@ -153,7 +153,7 @@ class AdminController extends Controller
 
     public function submit_guru(Request $req)
     { $validate = $req->validate([
-        'nip'=> 'required|max:255',
+        'nip'=> 'required|max:16|numeric',
         'nama'=> 'required',
         'alamat'=> 'required',
         'jenis_kelamin'=> 'required',
@@ -180,7 +180,7 @@ class AdminController extends Controller
     { 
         $guru= guru::find($req->get('id'));
         $validate = $req->validate([
-        'nip'=> 'required|max:255',
+        'nip'=> 'required|max:16|numeric',
         'nama'=> 'required',
         'alamat'=> 'required',
         'jenis_kelamin'=> 'required',
@@ -213,7 +213,7 @@ class AdminController extends Controller
 
     public function submit_jurusan(Request $req)
     { $validate = $req->validate([
-        'kode'=> 'required|max:255',
+        'kode'=> 'required|max:10|numeric',
         'jurusan'=> 'required',
     ]);
     $jurusan = new jurusan;
@@ -235,7 +235,7 @@ class AdminController extends Controller
     { 
         $jurusan= jurusan::find($req->get('id'));
         $validate = $req->validate([
-        'kode'=> 'required|max:255',
+        'kode'=> 'required|max:10|numeric',
         'jurusan'=> 'required',
     ]);
     $jurusan->kode = $req->get('kode');
@@ -271,10 +271,10 @@ class AdminController extends Controller
 
     public function submit_jadwal(Request $req)
     { $validate = $req->validate([
-        'guru'=> 'required|max:255',
+        'guru'=> 'required',
         'kelas'=> 'required',
         'mapel'=> 'required',
-        'hari'=> 'required|max:255',
+        'hari'=> 'required',
         'jam_masuk'=> 'required',
         'jam_keluar'=> 'required',
     ]);
@@ -299,10 +299,10 @@ class AdminController extends Controller
 
     public function update_jadwal(Request $req)
     { $validate = $req->validate([
-        'guru'=> 'required|max:255',
+        'guru'=> 'required',
         'kelas'=> 'required',
         'mapel'=> 'required',
-        'hari'=> 'required|max:255',
+        'hari'=> 'required',
         'jam_masuk'=> 'required',
         'jam_keluar'=> 'required',
         ]);

@@ -59,7 +59,7 @@
                         @csrf
                         <div class="form-group">
                             <label for="kode">Kode Jurusan</label>
-                            <input type="text" class="form-control" name="kode" id="kode" required />
+                            <input type="number" class="form-control" name="kode" id="kode" required />
                         </div>
                         <div class="form-group">
                             <label for="jurusan">Nama Jurusan</label>

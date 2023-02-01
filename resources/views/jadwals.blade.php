@@ -8,9 +8,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
   </head>
   <body>
-<nav id="navbar" class="navbar navbar-expand-lg  navbar-dark bg-dark  ">
+<nav id="navbar" class="navbar navbar-expand-lg  navbar-dark bg-dark " style=" padding-left: 40px; padding-right: 40px;">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img src="image/WhatsApp Image 2022-09-22 at 14.37.01.jpeg" alt="Ophelia Film"></a>
+            <a class="navbar-brand" href="#"><img src="{{asset('images/logo22.png')}}" alt="Ophelia Film"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>

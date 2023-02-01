@@ -171,45 +171,6 @@
         </div>
     </section>
 
-    <section id="contact">
-        <div class="container-fluid bg-dark" style="padding: 50px;">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4">
-                        <p>FAKULTAS & PASCASARJANA</p>
-                        <ul>
-                            <li><a href="">Fakultas Hukum</a></li>
-                            <li><a href="">Fakultas Keguruan & Ilmu Pendidikan</a></li>
-                            <li><a href="">Fakultas Teknik</a></li>
-                            <li><a href="">Fakultas Sains Terapan</a></li>
-                            <li><a href="">Fakultas Ekonomi & Bisnis Islam</a></li>
-                            <li><a href="">Fakultas Ilmu Hukum</a></li>
-                            <li><a href="">Fakultas Bahasa & Sastra Indonesia</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-md-4">
-                        <p>PORTAL KAMPUS</p>
-                        <ul>
-                            <li><a href="">SPMI UNSUR</a></li>
-                            <li><a href="">Jurnal Kampus</a></li>
-                            <li><a href="">Repository Kampus</a></li>
-                            <li><a href="">Dosen</a></li>
-                            <li><a href="">Kemahasiswaan</a></li>
-                            <li><a href="">LPPM</a></li>
-                            <li><a href="">Inkubator Bisnis</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-md-4">
-                        <p>KONTAK KAMI</p>
-                        <P>Telepone : (0263) 270 106</P>
-                        <p>FAX : 0263 261383</p>
-                    </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>

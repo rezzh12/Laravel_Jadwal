@@ -31,7 +31,6 @@
                             <option value="Rabu">Rabu</option>
                             <option value="Kamis">Kamis</option>
                             <option value="Jumat">Jumat</option>
-                            <option value="Sabtu">Sabtu</option>
                         </select>
                 </div>
                 <div class="col-md-2">
@@ -126,7 +125,14 @@
                         <div class="col-md-6">
                         <div class="form-group">
                             <label for="hari">Hari</label>
-                            <input type="day" class="form-control" name="hari" id="hari" required />
+                            <select name="hari" id="hari" class="form-control filter-select">
+                            <option value="">Pilih Hari</option>
+                            <option value="Senin">Senin</option>
+                            <option value="Selasa">Selasa</option>
+                            <option value="Rabu">Rabu</option>
+                            <option value="Kamis">Kamis</option>
+                            <option value="Jumat">Jumat</option>
+                        </select>
                         </div>
                         <div class="form-group">
                             <label for="jam_masuk">Jam Masuk</label>
