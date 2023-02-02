@@ -15,7 +15,7 @@ class CreateMapelsTable extends Migration
     {
         Schema::create('mapels', function (Blueprint $table) {
             $table->id();
-            $table->string('mapel', 20);
+            $table->string('mapel', 225);
             $table->string('semester', 20);
             $table->foreignId('jurusan_id')->constrained();
             $table->timestamps();

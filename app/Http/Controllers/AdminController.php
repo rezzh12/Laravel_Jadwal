@@ -213,7 +213,7 @@ class AdminController extends Controller
 
     public function submit_jurusan(Request $req)
     { $validate = $req->validate([
-        'kode'=> 'required|string|min:10|max:10',
+        'kode'=> 'required|string|min:3|max:3',
         'jurusan'=> 'required',
     ]);
     $jurusan = new jurusan;
@@ -235,9 +235,10 @@ class AdminController extends Controller
     { 
         $jurusan= jurusan::find($req->get('id'));
         $validate = $req->validate([
-        'kode'=> 'required|string|min:10|max:10',
+        'kode'=> 'required|string|min:3|max:3',
         'jurusan'=> 'required',
     ]);
+
     $jurusan->kode = $req->get('kode');
     $jurusan->jurusan = $req->get('jurusan');
     $jurusan->save();

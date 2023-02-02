@@ -31,7 +31,7 @@
                                             data-toggle="modal" data-target="#editJadwalModal"
                                             data-id="{{ $jr->id }}" style="margin-right:20px;">UBAH</button>
                                             
-                                            {!! Form::open(['url' => 'admin/kelas/delete/'.$jr->id, 'method' => 'POST']) !!}
+                                            {!! Form::open(['url' => 'admin/jurusan/delete/'.$jr->id, 'method' => 'POST']) !!}
                                         {{ Form::button('HAPUS', ['class' => 'btn btn-danger', 'onclick' => "deleteConfirmation('".$jr->jurusan."')"]) }}
                                     {!! Form::close() !!}
                                     </div>

@@ -13,7 +13,7 @@
                     <thead>
                         <tr class="text-center">
                             <th>NO</th>
-                            <th>Nama Mata Prlajaran</th>
+                            <th>Nama Mata Pelajaran</th>
                             <th>Semester</th>
                             <th>Jurusan</th>
                             <th>AKSI</th>
