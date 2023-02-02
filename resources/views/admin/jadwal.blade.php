@@ -267,7 +267,7 @@ $(function() {
                 }
             @endphp
             Swal.fire({
-                title: 'Error',
+                title: 'kesalahan',
                 html: "{!! $message !!}",
                 icon: 'error',
             })

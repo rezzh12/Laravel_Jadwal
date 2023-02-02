@@ -62,15 +62,15 @@
                     <form method="post" action="{{ route('admin.guru.submit') }}" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
-                            <label for="jenis_kegiatan">NIP</label>
+                            <label for="nip">NIP</label>
                             <input type="number" class="form-control" name="nip" id="nip" required />
                         </div>
                         <div class="form-group">
-                            <label for="nama_kegiatan">Nama Lengkap</label>
+                            <label for="nama">Nama Lengkap</label>
                             <input type="text" class="form-control" name="nama" id="nama" required />
                         </div>
                         <div class="form-group">
-                            <label for="nama_kegiatan">Alamat</label>
+                            <label for="alamat">Alamat</label>
                             <input type="text" class="form-control" name="alamat" id="alamat" required />
                         </div>
                         <div class="form-group">

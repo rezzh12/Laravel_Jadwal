@@ -153,7 +153,7 @@ class AdminController extends Controller
 
     public function submit_guru(Request $req)
     { $validate = $req->validate([
-        'nip'=> 'required|max:16|numeric',
+        'nip'=> 'required|string|min:16|max:16',
         'nama'=> 'required',
         'alamat'=> 'required',
         'jenis_kelamin'=> 'required',
@@ -180,7 +180,7 @@ class AdminController extends Controller
     { 
         $guru= guru::find($req->get('id'));
         $validate = $req->validate([
-        'nip'=> 'required|max:16|numeric',
+        'nip'=> 'required|string|min:16|max:16',
         'nama'=> 'required',
         'alamat'=> 'required',
         'jenis_kelamin'=> 'required',
@@ -213,7 +213,7 @@ class AdminController extends Controller
 
     public function submit_jurusan(Request $req)
     { $validate = $req->validate([
-        'kode'=> 'required|max:10|numeric',
+        'kode'=> 'required|string|min:10|max:10',
         'jurusan'=> 'required',
     ]);
     $jurusan = new jurusan;
@@ -235,7 +235,7 @@ class AdminController extends Controller
     { 
         $jurusan= jurusan::find($req->get('id'));
         $validate = $req->validate([
-        'kode'=> 'required|max:10|numeric',
+        'kode'=> 'required|string|min:10|max:10',
         'jurusan'=> 'required',
     ]);
     $jurusan->kode = $req->get('kode');
